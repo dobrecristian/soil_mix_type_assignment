@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mix de sol pentru plante</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand" rel="stylesheet">
+<style>
+  body {
+    background: url('https://i.imgur.com/LgrxpLz.png'), #d0f0c0;
+    font-family: 'Quicksand', cursive;
+    font-size: 20px;
+    padding: 12px;
+    max-width: 900px;
+    margin: auto;
+    color: #2f4f2f;
+  }
+  h2 {
+    color: #2e7d32;
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 12px;
+    margin-top: 12px;
+  }
+  label {
+    font-size: 16px;
+    margin-top: 12px;
+    display: block;
+  }
+  .plant-field-row {
+    margin-top: 16px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    position: relative;
+  }
+  .plant-field-label {
+    min-width: 220px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .plant-field-input {
+      width: 80%;
+      padding: 5px 8px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 2px solid #cdeac0;
+      background: linear-gradient(120deg, #eafaf1 60%, #cdeac0 100%);
+      color: #2f4f2f;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      box-sizing: border-box;
+      margin-top: 1px;
+      margin-bottom: 1px;
+      box-shadow: 0 1px 4px 0 rgba(76,175,80,0.06);
+  }
+  .plant-field-input:focus {
+    border-color: #66bb6a;
+    box-shadow: 0 0 0 2px #b5e7a0;
+  }
+  button#addPlant {
+    background-color: #66bb6a;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 0 20px;
+    height: 36px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+    user-select: none;
+    transition: background 0.2s, transform 0.1s;
+    margin-left: 10px;
+    box-shadow: 0 1px 4px 0 rgba(76,175,80,0.08);
+    letter-spacing: 1px;
+  }
+  button#addPlant:hover, button#addPlant:focus {
+    background-color: #388e3c;
+    transform: scale(1.05);
+  }
+  .autocomplete-items {
+    position: absolute;
+    border: 1px solid #b5e7a0;
+    border-top: none;
+    z-index: 99;
+    background: #fff;
+    max-height: 180px;
+    overflow-y: auto;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 2px 8px 0 rgba(76,175,80,0.10);
+    left: 0;
+    right: 0;
+  }
+  .autocomplete-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+  }
+  .autocomplete-item:hover, .autocomplete-active {
+    background-color: #cdeac0 !important;
+    color: #2e7d32;
+  }
+  table {
+    width: 100%;
+    margin-top: 24px;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  th, td {
+    padding: 7px 8px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+  th {
+    background-color: #b5e7a0;
+    color: #2f4f2f;
+    font-size: 18px;
+  }
+  .remove-plant-btn {
+    background:#e57373;
+    border:none;
+    color:#fff;
+    font-weight:700;
+    font-size:18px;
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    cursor:pointer;
+  }
+</style>
+</head>
+<body>
+<h2>Ce mix de pământ se potrivește plantei tale?</h2>
+
+<div class="plant-field-row" style="max-width:600px;margin:auto;">
+  <label for="plantInput" class="plant-field-label">Nume plantă:</label>
+  <div style="flex:1;position:relative;">
+    <input id="plantInput" class="plant-field-input" type="text" placeholder="Introdu numele plantei" autocomplete="off" />
+    <div id="autocomplete-list" class="autocomplete-items" style="display:none;"></div>
+  </div>
+  <button id="addPlant" title="Adaugă plantă">OK</button>
+</div>
+
+<div id="plantsTableContainer"></div>
+
+<script>
+const mixes = {
+  "MIX 1": [
+    "Anthurium", "Aglaonema", "Alocasia", "Dieffenbachia", "Epipremnum", "Monstera", "Philodendron", "Spathiphyllum", "Zamioculcas", "Revoluta", "Sago Palm", "Palmier Areca", "Palmier Pitic", "Palmier Washingtonia", "Strelitzia"
+  ],
+  "MIX 2": [
+    "Ananas", "Aechmea", "Bromeliada", "Guzmania", "Calathea", "Ctenanthe", "Maranta", "Musa tropicana", "Macrocarpa"
+  ],
+  "MIX 3": [
+    "Aloe Vera", "Crassula Ovata", "Kalanchoe", "Cactus", "Schlumbergera", "Croton", "Euphorbia", "Poinsettia", "Eucalypt"
+  ],
+  "MIX 4": [
+    "Azalee", "Muscata", "Busuioc", "Menta", "Rozmarin", "Avocado", "Dafin", "Cacao", "Hibiscus", "Pachira Aquatica", "Iasomie", "Liliac", "Măslin", "Pilea", "Mimosa pudica", "Calamondin", "Grapefruit", "Kumquat", "Lămâi", "Limequat", "Mandarin", "Crin", "Trandafir", "Trandafir Japonez", "Oxalis"
+  ],
+  "MIX 5": [
+    "Adenium Obesum", "Iasomie de Madagascar", "Leandru", "Plumeria", "Pachypodium lamerei (Palmier Cactus)", "Violeta de Africa", "Ficus", "Smochin", "Bougainvillea", "Phlebodium Aureum (Feriga)", "Arborele de cafea", "Gardenia"
+  ],
+  "MIX 6": [
+    "Cordyline", "Dracaena", "Ponytail Palm (beaucarnea recurvata)", "Sansevieria", "Spider Plant", "Yucca", "Amaryllis", "Crin", "Zephyranthes", "Iedera", "Polyscias", "Schefflera", "Tradescantia"
+  ],
+  "MIX 7": [
+    "Cattleya", "Cymbidium", "Dendrobium", "Phalaenopsis", "Vanda"
+  ]
+};
+// Flat plant list for autocomplete (case-insensitive, unique)
+const plantToMix = {};
+Object.entries(mixes).forEach(([mix, arr]) => {
+  arr.forEach(plant => {
+    plantToMix[plant.toLowerCase()] = mix;
+  });
+});
+const plantNames = Object.keys(plantToMix);
+
+// State for added plants
+let addedPlants = [];
+
+// Helper: Capitalize first letter, rest lowercase
+function capitalizeFirstLetter(str) {
+  // Handles multi-word names as well
+  return str.split(' ').map(word =>
+    word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+  ).join(' ');
+}
+
+function autocomplete(inp, arr) {
+  let currentFocus;
+  inp.addEventListener("input", function(e) {
+    let val = this.value;
+    closeAllLists();
+    if (!val) return false;
+    const listDiv = document.getElementById("autocomplete-list");
+    listDiv.innerHTML = "";
+    let matches = arr.filter(p => p.toLowerCase().includes(val.toLowerCase()));
+    matches = matches.slice(0, 12);
+    if (matches.length === 0) {
+      listDiv.style.display = "none";
+      return;
+    }
+    matches.forEach(item => {
+      let itemDiv = document.createElement("div");
+      itemDiv.className = "autocomplete-item";
+      // Highlight match (case-insensitive)
+      const idx = item.toLowerCase().indexOf(val.toLowerCase());
+      if (idx >= 0) {
+        itemDiv.innerHTML = item.substring(0, idx) + "<strong>" + item.substring(idx, idx + val.length) + "</strong>" + item.substring(idx + val.length);
+      } else {
+        itemDiv.innerHTML = item;
+      }
+      itemDiv.addEventListener("click", function(e) {
+        inp.value = item;
+        closeAllLists();
+      });
+      listDiv.appendChild(itemDiv);
+    });
+    listDiv.style.display = "block";
+  });
+  inp.addEventListener("keydown", function(e) {
+    let listDiv = document.getElementById("autocomplete-list");
+    let items = listDiv ? listDiv.getElementsByTagName("div") : [];
+    if (e.keyCode == 40) { // down
+      currentFocus++;
+      addActive(items);
+    } else if (e.keyCode == 38) { // up
+      currentFocus--;
+      addActive(items);
+    } else if (e.keyCode == 13) { // enter
+      e.preventDefault();
+      if (currentFocus > -1 && items[currentFocus]) {
+        items[currentFocus].click();
+      }
+    }
+  });
+  function addActive(items) {
+    if (!items) return false;
+    removeActive(items);
+    if (currentFocus >= items.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = items.length - 1;
+    items[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(items) {
+    for (let i = 0; i < items.length; i++) {
+      items[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    let listDiv = document.getElementById("autocomplete-list");
+    if (listDiv) listDiv.style.display = "none";
+  }
+  document.addEventListener("click", function (e) {
+    closeAllLists(e.target);
+  });
+}
+autocomplete(document.getElementById("plantInput"), plantNames);
+
+document.getElementById("addPlant").addEventListener("click", addPlant);
+document.getElementById("plantInput").addEventListener("keydown", function(e) {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    addPlant();
+  }
+});
+
+function addPlant() {
+  const input = document.getElementById("plantInput");
+  const name = input.value.trim();
+  if (!name) return;
+  // Find canonical plant name (case-insensitive)
+  const match = plantNames.find(p => p.toLowerCase() === name.toLowerCase());
+  if (!match) {
+    alert("Planta nu există în listă!");
+    return;
+  }
+  if (addedPlants.some(p => p.name.toLowerCase() === match.toLowerCase())) {
+    input.value = "";
+    return;
+  }
+  // Force first letter uppercase, rest lowercase for display
+  const formattedName = capitalizeFirstLetter(match);
+  addedPlants.push({ name: formattedName, mix: plantToMix[match.toLowerCase()] });
+  input.value = "";
+  renderPlantsTable();
+}
+
+function removePlant(idx) {
+  addedPlants.splice(idx, 1);
+  renderPlantsTable();
+}
+
+function renderPlantsTable() {
+  const container = document.getElementById("plantsTableContainer");
+  if (addedPlants.length === 0) {
+    container.innerHTML = "";
+    return;
+  }
+  let html = `<table>
+    <thead>
+      <tr><th>Plantă</th><th>Mix recomandat</th><th></th></tr>
+    </thead>
+    <tbody>`;
+  addedPlants.forEach((p, idx) => {
+    html += `<tr>
+      <td>${p.name}</td>
+      <td>${p.mix}</td>
+      <td><button class="remove-plant-btn" title="Șterge" onclick="removePlant(${idx})">&times;</button></td>
+    </tr>`;
+  });
+  html += `</tbody></table>`;
+  container.innerHTML = html;
+}
+
+// Expose removePlant for inline onclick
+window.removePlant = removePlant;
+</script>
+</body>
+</html>

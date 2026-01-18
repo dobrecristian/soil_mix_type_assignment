@@ -3,178 +3,530 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Mix de sol pentru plante</title>
-<link href="https://fonts.googleapis.com/css2?family=Quicksand" rel="stylesheet">
+<title>Ce mix de pământ se potrivește plantei tale?</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
   body {
-    background: url('https://i.imgur.com/LgrxpLz.png'), #d0f0c0;
-    font-family: 'Quicksand', cursive;
-    font-size: 20px;
-    padding: 12px;
-    max-width: 900px;
-    margin: auto;
-    color: #2f4f2f;
+    background: url('https://i.imgur.com/LgrxpLz.png'), linear-gradient(135deg, #8BC34A 0%, #CDDC39 100%);
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    min-height: 100vh;
+    color: #2d3748;
   }
-  h2 {
-    color: #2e7d32;
+  
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .header {
+    background: linear-gradient(135deg, #689F38 0%, #cdff03 100%);
+    padding: 40px 30px;
+    border-radius: 20px 20px 0 0;
     text-align: center;
-    font-size: 30px;
-    margin-bottom: 12px;
-    margin-top: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   }
-  label {
+  
+  .header h1 {
+    color: white;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .header p {
+    color: rgba(255,255,255,0.95);
     font-size: 16px;
-    margin-top: 12px;
-    display: block;
   }
-  .plant-field-row {
-    margin-top: 16px;
-    margin-bottom: 8px;
+  
+  .main-card {
+    background: white;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    padding: 30px;
+  }
+  
+  .input-section {
+    background: linear-gradient(135deg, #F1F8E9 0%, #DCEDC8 100%);
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    border: 2px solid #cdff03;
+  }
+  
+  .input-wrapper {
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 12px;
+    gap: 15px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  
+  .input-group {
+    flex: 1;
+    min-width: 250px;
     position: relative;
   }
-  .plant-field-label {
-    min-width: 220px;
+  
+  label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 8px;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 2px solid #cbd5e0;
+    border-radius: 10px;
+    background: white;
+    transition: all 0.3s;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  input[type="text"]:focus {
+    outline: none;
+    border-color: #cdff03;
+    box-shadow: 0 0 0 3px rgba(205, 255, 3, 0.1);
+  }
+  
+  .btn {
+    padding: 12px 30px;
     font-size: 16px;
     font-weight: 600;
-  }
-  .plant-field-input {
-      width: 80%;
-      padding: 5px 8px;
-      font-size: 16px;
-      border-radius: 6px;
-      border: 2px solid #cdeac0;
-      background: linear-gradient(120deg, #eafaf1 60%, #cdeac0 100%);
-      color: #2f4f2f;
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-      box-sizing: border-box;
-      margin-top: 1px;
-      margin-bottom: 1px;
-      box-shadow: 0 1px 4px 0 rgba(76,175,80,0.06);
-  }
-  .plant-field-input:focus {
-    border-color: #66bb6a;
-    box-shadow: 0 0 0 2px #b5e7a0;
-  }
-  button#addPlant {
-    background-color: #66bb6a;
-    color: white;
-    font-size: 18px;
-    font-weight: 700;
-    padding: 0 20px;
-    height: 36px;
-    border-radius: 8px;
     border: none;
+    border-radius: 10px;
     cursor: pointer;
-    line-height: 1;
-    user-select: none;
-    transition: background 0.2s, transform 0.1s;
-    margin-left: 10px;
-    box-shadow: 0 1px 4px 0 rgba(76,175,80,0.08);
-    letter-spacing: 1px;
+    transition: all 0.3s;
+    font-family: 'Poppins', sans-serif;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
   }
-  button#addPlant:hover, button#addPlant:focus {
-    background-color: #388e3c;
-    transform: scale(1.05);
+  
+  .btn-primary {
+    background: linear-gradient(135deg, #689F38 0%, #cdff03 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(205, 255, 3, 0.3);
+    align-self: flex-end;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
   }
+  
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(205, 255, 3, 0.4);
+  }
+  
+  .btn-secondary {
+    background: linear-gradient(135deg, #7CB342 0%, #9CCC65 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(124, 179, 66, 0.3);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  }
+  
+  .btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(124, 179, 66, 0.4);
+  }
+  
+  .btn-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  
   .autocomplete-items {
     position: absolute;
-    border: 1px solid #b5e7a0;
+    background: white;
+    border: 2px solid #cdff03;
     border-top: none;
-    z-index: 99;
-    background: #fff;
-    max-height: 180px;
+    border-radius: 0 0 10px 10px;
+    max-height: 200px;
     overflow-y: auto;
-    border-radius: 0 0 8px 8px;
-    box-shadow: 0 2px 8px 0 rgba(76,175,80,0.10);
-    left: 0;
-    right: 0;
+    z-index: 99;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 100%;
   }
+  
   .autocomplete-item {
-    padding: 8px 12px;
+    padding: 12px 16px;
     cursor: pointer;
-    background-color: #fff;
-    border-bottom: 1px solid #eee;
-    font-size: 16px;
+    border-bottom: 1px solid #e2e8f0;
+    transition: background 0.2s;
   }
-  .autocomplete-item:hover, .autocomplete-active {
-    background-color: #cdeac0 !important;
-    color: #2e7d32;
+  
+  .autocomplete-item:hover,
+  .autocomplete-active {
+    background: linear-gradient(135deg, #F1F8E9 0%, #DCEDC8 100%);
   }
+  
+  .autocomplete-item strong {
+    color: #a8d600;
+  }
+  
   table {
     width: 100%;
-    margin-top: 24px;
-    border-collapse: collapse;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 12px;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 20px;
     overflow: hidden;
+    border-radius: 10px;
   }
-  th, td {
-    padding: 7px 8px;
-    text-align: left;
-    border-bottom: 1px solid #ccc;
+  
+  thead {
+    background: linear-gradient(135deg, #689F38 0%, #cdff03 100%);
   }
+  
   th {
-    background-color: #b5e7a0;
-    color: #2f4f2f;
-    font-size: 18px;
+    padding: 15px;
+    text-align: left;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
   }
-  .remove-plant-btn {
-    background:#e57373;
-    border:none;
-    color:#fff;
-    font-weight:700;
-    font-size:18px;
-    width:32px;
-    height:32px;
-    border-radius:50%;
-    cursor:pointer;
+  
+  td {
+    padding: 15px;
+    border-bottom: 1px solid #e2e8f0;
+    background: white;
+  }
+  
+  tr:hover td {
+    background: #f7fafc;
+  }
+  
+  .mix-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    color: white;
+    background: linear-gradient(135deg, #7CB342 0%, #9CCC65 100%);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  }
+  
+  .remove-btn {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 700;
+    transition: all 0.3s;
+  }
+  
+  .remove-btn:hover {
+    transform: scale(1.1) rotate(90deg);
+  }
+  
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #718096;
+  }
+  
+  .empty-state-icon {
+    font-size: 64px;
+    margin-bottom: 15px;
+    opacity: 0.5;
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .modal-content {
+    background: white;
+    margin: 50px auto;
+    padding: 0;
+    width: 90%;
+    max-width: 900px;
+    max-height: 85vh;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    animation: slideUp 0.3s;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  @keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  .modal-header {
+    background: linear-gradient(135deg, #689F38 0%, #cdff03 100%);
+    padding: 25px 30px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .modal-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  }
+  
+  .close {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .close:hover {
+    background: rgba(255,255,255,0.3);
+    transform: rotate(90deg);
+  }
+  
+  .modal-body {
+    padding: 30px;
+    overflow-y: auto;
+    flex: 1;
+  }
+  
+  .mix-section {
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, #F1F8E9 0%, #DCEDC8 100%);
+    padding: 20px;
+    border-radius: 15px;
+    border-left: 5px solid #cdff03;
+  }
+  
+  .mix-section h3 {
+    color: #558B2F;
+    font-size: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .plant-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  
+  .plant-item {
+    background: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e0;
+    font-size: 14px;
+    transition: all 0.2s;
+  }
+  
+  .plant-item:hover {
+    border-color: #cdff03;
+    transform: translateX(5px);
+    box-shadow: 0 2px 8px rgba(205, 255, 3, 0.2);
+  }
+  
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 25px;
+  }
+  
+  .stat-card {
+    background: linear-gradient(135deg, #7CB342 0%, #9CCC65 100%);
+    padding: 20px;
+    border-radius: 15px;
+    color: white;
+    text-align: center;
+  }
+  
+  .stat-number {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  }
+  
+  .stat-label {
+    font-size: 14px;
+    opacity: 0.9;
+  }
+  
+  .search-box {
+    margin-bottom: 20px;
+  }
+  
+  .search-box input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 2px solid #cbd5e0;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .search-box input:focus {
+    outline: none;
+    border-color: #cdff03;
+    box-shadow: 0 0 0 3px rgba(205, 255, 3, 0.1);
+  }
+  
+  @media (max-width: 768px) {
+    .header h1 {
+      font-size: 24px;
+    }
+    
+    .input-wrapper {
+      flex-direction: column;
+    }
+    
+    .btn-primary {
+      width: 100%;
+      justify-content: center;
+    }
+    
+    .plant-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
 </head>
 <body>
-<h2>Ce mix de pământ se potrivește plantei tale?</h2>
-
-<div class="plant-field-row" style="max-width:600px;margin:auto;">
-  <label for="plantInput" class="plant-field-label">Nume plantă:</label>
-  <div style="flex:1;position:relative;">
-    <input id="plantInput" class="plant-field-input" type="text" placeholder="Introdu numele plantei" autocomplete="off" />
-    <div id="autocomplete-list" class="autocomplete-items" style="display:none;"></div>
+<div class="container">
+  <div class="header">
+    <h1>🌿 Ce mix de pământ se potrivește plantei tale?</h1>
+    <p>Descoperă mixul perfect de pământ pentru plantele tale</p>
   </div>
-  <button id="addPlant" title="Adaugă plantă">OK</button>
+  
+  <div class="main-card">
+    <div class="input-section">
+      <div class="input-wrapper">
+        <div class="input-group">
+          <label for="plantInput">🪴 Caută planta ta:</label>
+          <input id="plantInput" type="text" placeholder="Începe să scrii numele plantei..." autocomplete="off" />
+          <div id="autocomplete-list" class="autocomplete-items" style="display:none;"></div>
+        </div>
+        <button id="addPlant" class="btn btn-primary">
+          ✓ Adaugă
+        </button>
+      </div>
+    </div>
+    
+    <div class="btn-group">
+      <button id="viewAllBtn" class="btn btn-secondary">
+        📋 Vezi toate plantele
+      </button>
+      <button id="clearAllBtn" class="btn btn-secondary" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); box-shadow: 0 4px 15px rgba(245, 87, 108, 0.3);">
+        🗑️ Șterge tot
+      </button>
+    </div>
+    
+    <div id="plantsTableContainer"></div>
+  </div>
 </div>
 
-<div id="plantsTableContainer"></div>
+<!-- Modal for viewing all plants -->
+<div id="allPlantsModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>📚 Toate plantele disponibile</h2>
+      <button class="close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="search-box">
+        <input type="text" id="modalSearch" placeholder="🔍 Caută în lista de plante..." />
+      </div>
+      <div id="allPlantsContent"></div>
+    </div>
+  </div>
+</div>
 
 <script>
 const mixes = {
   "MIX 1": [
-    "Anthurium", "Aglaonema", "Alocasia", "Dieffenbachia", "Epipremnum", "Monstera", "Philodendron", "Spathiphyllum", "Zamioculcas", "Palmier Areca", "Palmier Pitic", "Palmier Washingtonia", "Strelitzia"
+    "Monstera deliciosa", "Monstera deliciosa borsigiana", "Monstera adansonii", "Monstera adansonii laniata", "Monstera siltepecana", "Monstera standleyana", "Monstera dubia", "Monstera peru", "Monstera obliqua", "Monstera Thai Constellation", "Monstera Albo", "Monstera pinnatipartita", "Philodendron hederaceum", "Philodendron brasil", "Philodendron micans", "Philodendron scandens", "Philodendron gloriosum", "Philodendron melanochrysum", "Philodendron verrucosum", "Philodendron white knight", "Philodendron white wizard", "Philodendron pink princess", "Philodendron burle marx", "Philodendron burle marx fantasy", "Philodendron hastatum", "Philodendron red emerald", "Philodendron atabapoense", "Philodendron rugosum", "Philodendron camposportoanum", "Epipremnum aureum", "Epipremnum marble queen", "Epipremnum golden pothos", "Epipremnum pinnatum", "Epipremnum pinnatum Cebu Blue", "Scindapsus pictus argyraeus", "Scindapsus pictus exotica", "Scindapsus pictus silver splash", "Scindapsus treubii moonlight", "Scindapsus treubii dark form", "Anthurium crystallinum", "Anthurium clarinervium", "Anthurium magnificum", "Anthurium warocqueanum", "Anthurium andreanum", "Anthurium veitchii", "Anthurium forgetii", "Aglaonema silver bay", "Aglaonema red valentine", "Aglaonema pictum tricolor", "Aglaonema cutlass", "Dieffenbachia seguine", "Dieffenbachia reflector", "Dieffenbachia camouflage", "Spathiphyllum wallisii", "Spathiphyllum domino", "Spathiphyllum sensation", "Syngonium podophyllum", "Syngonium albo", "Syngonium mojito", "Syngonium pink splash", "Zamioculcas zamiifolia", "Zamioculcas raven", "Raphidophora tetrasperma", "Raphidophora decursiva", "Raphidophora korthalsii", "Raphidophora hayi", "Raphidophora cryptantha", "Raphidophora foraminifera", "Raphidophora beccarii", "Strelitzia reginae", "Strelitzia reginae Mandela's Gold", "Strelitzia reginae dwarf", "Strelitzia reginae compacta", "Strelitzia reginae giant form", "Strelitzia reginae variegata", "Strelitzia reginae multi-stem", "Strelitzia reginae broad leaf", "Strelitzia reginae narrow leaf", "Strelitzia nicolai", "Strelitzia nicolai compacta", "Strelitzia nicolai variegata", "Strelitzia nicolai extra tall", "Strelitzia nicolai multi-stem", "Strelitzia nicolai cold-tolerant strain", "Strelitzia nicolai White Giant", "Alocasia amazonica", "Alocasia zebrina", "Alocasia macrorrhizos", "Alocasia cuprea", "Alocasia reginula Black Velvet", "Alocasia polly", "Alocasia odora", "Caladium", "Caladium bicolor", "Caladium hortulanum", "Caladium picturatum", "Caladium schomburgkii", "Caladium steudneriifolium", "Caladium humboldtii"
   ],
-  "MIX 2": [
-    "Ananas", "Aechmea", "Bromeliada", "Guzmania", "Calathea", "Ctenanthe", "Maranta", "Musa tropicana", "Macrocarpa"
+  "MIX 2A": [
+    "Calathea orbifolia", "Calathea makoyana", "Calathea lancifolia", "Calathea zebrina", "Calathea musaica", "Calathea roseopicta", "Calathea roseopicta Dottie", "Calathea roseopicta Medallion", "Calathea picturata Argentea", "Calathea ornata", "Calathea crocata", "Calathea warscewiczii", "Calathea beauty star", "Calathea majestica White Star", "Calathea fasciata", "Calathea albertii", "Calathea rufibarba", "Calathea elliptica", "Calathea burle-marxii Ice Blue", "Calathea Yellow Fusion", "Calathea lietzei Ornata", "Calathea leopardina", "Calathea loeseneri", "Calathea veitchiana", "Ctenanthe burle-marxii", "Ctenanthe burle-marxii Amabilis", "Ctenanthe setosa Grey Star", "Ctenanthe oppenheimiana", "Ctenanthe lubbersiana", "Ctenanthe Golden Mosaic", "Ctenanthe marantifolia", "Ctenanthe pilosa", "Maranta leuconeura", "Maranta leuconeura Kerchoveana", "Maranta leuconeura Red Vein", "Maranta lemon lime", "Maranta Silver Band", "Stromanthe sanguinea", "Stromanthe Triostar", "Stromanthe Magic Star"
   ],
-  "MIX 3": [
-    "Aloe Vera", "Crassula Ovata", "Kalanchoe", "Cactus", "Schlumbergera", "Croton", "Euphorbia", "Poinsettia", "Eucalypt", "Cycas Revoluta", "Sago Palm"
+  "MIX 2B": [
+    "Guzmania lingulata", "Guzmania Hope", "Guzmania Tempo", "Guzmania Red Star", "Guzmania Rosa", "Guzmania Luna", "Guzmania Ostro", "Guzmania Optima", "Guzmania Ruby", "Guzmania Passion", "Aechmea fasciata", "Aechmea blue rain", "Aechmea blanchetiana", "Aechmea chantinii", "Aechmea recurvata", "Aechmea bromeliifolia", "Aechmea distichantha", "Aechmea weilbachii", "Aechmea comata", "Aechmea mexicana", "Vriesea splendens", "Vriesea carinata", "Vriesea fosteriana", "Vriesea hieroglyphica", "Vriesea Astrid", "Vriesea Galaxy", "Vriesea Energy", "Vriesea gigantea", "Neoregelia fireball", "Neoregelia spectabilis", "Neoregelia carolinae", "Neoregelia Zoe", "Neoregelia concentrica", "Neoregelia Pink Spot", "Tillandsia cyanea", "Tillandsia xerographica", "Tillandsia ionantha", "Tillandsia usneoides", "Tillandsia aeranthos", "Tillandsia capitata", "Billbergia nutans", "Billbergia pyramidalis", "Ananas comosus", "Ananas bracteatus", "Pitcairnia feliciana", "Cryptanthus bivittatus", "Cryptanthus zonatus", "Dyckia brevifolia", "Dyckia fosteriana", "Hechtia glomerata", "Hechtia texensis", "Hechtia argentea", "Hechtia rosea", "Hechtia lanata", "Hechtia tillandsioides", "Hechtia flexilifolia", "Hechtia podantha", "Hechtia scariosa", "Hechtia zamudioi", "Hechtia pretiosa", "Hechtia epigyna", "Puya alpestris", "Puya chilensis", "Puya berteroniana", "Puya coerulea", "Puya mirabilis", "Puya venusta", "Puya ferruginea", "Puya hamata", "Puya laxa", "Puya clava-herculis", "Puya goudotiana", "Puya dyckioides", "Puya dasylirioides", "Puya scarlatina", "Catopsis berteroniana", "Catopsis nutans", "Catopsis morreniana", "Catopsis hahnii", "Catopsis juncifolia", "Catopsis paniculata", "Catopsis floribunda", "Catopsis sessiliflora", "Catopsis subulata", "Catopsis compacta", "Catopsis minimiflora", "Catopsis occulta", "Catopsis pendula", "Werauhia sanguinolenta", "Werauhia gladioliflora", "Werauhia kupperiana", "Werauhia ringens", "Werauhia pycnantha", "Werauhia capitata", "Werauhia insignis", "Werauhia sintenisii", "Werauhia megalantha", "Werauhia laxa", "Werauhia neoregelioides", "Werauhia penduliflora"
+  ],
+  "MIX 3A": [
+    "Mammillaria elongata", "Mammillaria gracilis", "Mammillaria hahniana", "Mammillaria bocasana", "Mammillaria spinosissima", "Mammillaria luethyi", "Mammillaria humboldtii", "Mammillaria bombycina", "Mammillaria duwei", "Astrophytum myriostigma", "Astrophytum asterias", "Astrophytum capricorne", "Echinopsis danudatum", "Echinopsis ancistrophora", "Echinopsis tubiflora", "Echinopsis oxygona", "Echinopsis eyriesii", "Echinopsis subdenudata", "Echinopsis chamaecereus", "Echinopsis calochlora", "Echinopsis clavata", "Echinopsis densispina", "Ferocactus acanthodes", "Ferocactus alamosanus", "Ferocactus chrysacanthus", "Ferocactus coloratus", "Ferocactus covillei", "Ferocactus diguetii", "Ferocactus echidne", "Ferocactus emoryi", "Ferocactus fordii", "Ferocactus glaucescens", "Codiaeum variegatum", "Codiaeum trilobum", "Codiaeum luzonicum", "Codiaeum multifidum", "Codiaeum moluccanum", "Codiaeum cagayanense", "Gymnocalycium mihanovichii", "Gymnocalycium damsii", "Gymnocalycium anisitsii", "Gymnocalycium friedrichii", "Gymnocalycium stenopleurum", "Gymnocalycium megatae", "Gymnocalycium baldianum", "Gymnocalycium horstii", "Gymnocalycium buenekeri", "Gymnocalycium denidatum", "Parodia magnifica", "Parodia leninghausii", "Parodia ottonis", "Parodia scopa", "Parodia herteri", "Parodia buiningii", "Parodia mammulosa", "Parodia warasii", "Parodia chrysacanthion", "Parodia submammulosa", "Rebutia heliosa", "Rebutia fiebrigii", "Rebutia muscula", "Rebutia marsoneri", "Rebutia minuscula", "Rebutia krainziana", "Rebutia flavistyla", "Rebutia perplexa", "Rebutia albiflora", "Rebutia canigueralii", "Opuntia microdasys", "Opuntia ficus-indica", "Opuntia basilaris", "Opuntia engelmannii", "Opuntia polyacantha", "Opuntia humifusa", "Opuntia monacantha", "Opuntia fragilis", "Opuntia stricta", "Opuntia chlorotica", "Cleistocactus strausii", "Cleistocactus winteri", "Cleistocactus smaragdiflorus", "Cleistocactus ritteri", "Cleistocactus baumanii", "Cleistocactus icosagonus", "Cleistocactus sepium", "Cleistocactus brookeae", "Cleistocactus ferrarii", "Cleistocactus parviflorus", "Crassula ovata", "Crassula arborescens", "Crassula perforata", "Crassula muscosa", "Crassula capitella", "Crassula Campfire", "Crassula rupestris", "Crassula tetragona", "Crassula pellucida", "Crassula falcata", "Kalanchoe blossfeldiana", "Kalanchoe tomentosa", "Kalanchoe beharensis", "Kalanchoe daigremontiana", "Kalanchoe marnieriana", "Kalanchoe thyrsiflora", "Kalanchoe fedtschenkoi", "Kalanchoe orgyalis", "Kalanchoe luciae", "Kalanchoe pinnata", "Sedum morganianum", "Sedum burrito", "Sedum rubrotinctum", "Sedum pachyphyllum", "Sedum adolphii", "Sedum nussbaumerianum", "Sedum sieboldii", "Sedum acre", "Sedum album", "Sedum reflexum", "Sedum spurium", "Sedum hispanicum", "Echeveria elegans", "Echeveria lilacina", "Echeveria agavoides", "Echeveria pulvinata", "Echeveria derenbergii", "Echeveria setosa", "Echeveria runyonii", "Echeveria harmsii", "Echeveria nodulosa", "Echeveria secunda", "Aloe aristata", "Aloe humilis", "Aloe juvenna", "Aloe vera", "Aloe rauhii", "Haworthia cooperi", "Haworthia attenuata", "Haworthia fasciata", "Haworthia truncata", "Haworthia cymbiformis", "Gasteria bicolor", "Gasteria verrucosa", "Gasteria liliputana", "Gasteria carinata", "Gasteria baylissiana", "Euphorbia milii", "Euphorbia trigona", "Euphorbia lactea", "Euphorbia obesa", "Euphorbia enopla", "Thelocactus bicolor", "Thelocactus setispinus", "Thelocactus rinconensis", "Thelocactus hexaedrophorus", "Thelocactus conothelos", "Thelocactus leucacanthus", "Thelocactus hastifer", "Ariocarpus fissuratus", "Ariocarpus retusus", "Ariocarpus trigonus", "Ariocarpus agavoides", "Ariocarpus kotschoubeyanus", "Ariocarpus bravoanus", "Ariocarpus scaphirostris", "Maihueniopsis glomerata", "Maihueniopsis darwinii", "Maihueniopsis platyacantha", "Maihueniopsis mandragora", "Maihueniopsis ovata", "Maihueniopsis minuta", "Maihueniopsis atacamensis", "Maihueniopsis domeykoensis", "Maihueniopsis intricata", "Maihueniopsis boliviana", "Pterocactus tuberosus", "Pterocactus fischeri", "Pterocactus gonjianii", "Pterocactus megliolii", "Pterocactus valentinii", "Pterocactus affinis", "Pterocactus hickenii", "Pterocactus skottsbergii", "Pterocactus kunzei", "Pterocactus araucanus", "Schlumbergera truncata", "Schlumbergera russelliana", "Schlumbergera kautskyi", "Schlumbergera microsphaerica", "Schlumbergera opuntioides", "Schlumbergera orssichiana", "Schlumbergera buckleyi", "Schlumbergera lavenderiana", "Schlumbergera lutea", "Schlumbergera gaertneri", "Hatiora salicornioides", "Hatiora herminiae", "Hatiora gaertneri", "Hatiora rosea", "Hatiora graeseri", "Aztekium ritteri", "Aztekium hintonii", "Aztekium valdezii", "Geohintonia mexicana", "Lophophora diffusa", "Lophophora fricii", "Lophophora decipiens", "Lophophora koehresii", "Lophophora jourdaniana", "Lophophora alberto-vojtechii", "Oreocereus celsianus", "Oreocereus trollii", "Oreocereus hendriksenianus", "Oreocereus doelzianus", "Oreocereus leucotrichus", "Oreocereus hempelianus", "Oreocereus neocelsianus", "Oreocereus tacnaensis", "Oreocereus fossulatus", "Rhipsalis baccifera", "Rhipsalis campos-portoana", "Rhipsalis cereoides", "Rhipsalis clavata", "Rhipsalis crispata", "Rhipsalis dissimilis", "Rhipsalis elliptica", "Rhipsalis floccosa", "Rhipsalis grandiflora", "Rhipsalis hoelleri", "Rhipsalis juengeri", "Pereskia aculeata", "Pereskia bleo", "Pereskia grandifolia", "Pereskia guamacho", "Pereskia diaz-romeroana", "Pereskia horrida", "Pereskia stenantha", "Pereskia portulacifolia", "Pereskia weberiana", "Poinsettia Freedom Red", "Poinsettia Princess Pink", "Poinsettia Pink Early", "Poinsettia Monet Pink", "Poinsettia Polar Bear", "Poinsettia Snowcap", "Poinsettia Sonora White Glitter", "Poinsettia Holly Point", "Poinsettia Gold Rush", "Poinsettia Autumn Leaves"
+  ],
+  "MIX 3B": [
+    "Adenium obesum", "Adenium arabicum", "Adenium somalense", "Adenium swazicum", "Adenium multiflorum", "Pachypodium lamerei", "Pachypodium saundersii", "Pachypodium brevicaule", "Pachypodium rosulatum", "Pachypodium succulentum", "Dioscorea elephantipes", "Dioscorea mexicana", "Fockea edulis", "Fockea capensis", "Fockea angustifolia", "Stephania erecta", "Stephania venosa", "Jatropha podagrica", "Jatropha berlandieri", "Beaucarnea recurvata", "Ibervillea sonorae", "Citrullus colocynthis", "Gerrardanthus macrorhizus", "Cyphostemma juttae", "Cyphostemma uter", "Operculicarya decaryi", "Operculicarya pachypus", "Tylecodon paniculatus", "Tylecodon wallichii", "Tylecodon reticulatus", "Tylecodon ventricosa", "Euphorbia tortirama", "Euphorbia squarrosa", "Euphorbia fusiformis", "Euphorbia viguieri", "Pelargonium carnosum", "Pelargonium crithmifolium", "Pelargonium klinghardtense", "Pelargonium mirabile", "Ipomoea platensis", "Ipomoea crassicaulis", "Ipomoea bolusiana", "Uncarina grandidieri", "Uncarina roeoesliana", "Uncarina stellulifera", "Senna meridionalis", "Senna singueana", "Ficus petiolaris", "Ficus palmeri", "Ficus punduanus", "Dorstenia gigas", "Dorstenia foetida", "Dorstenia crispa", "Dorstenia barnimiana", "Xerosicyos danguyi", "Xerosicyos pubescens", "Othonna capensis", "Othonna arbuscula", "Othonna retrorsa", "Avonia quinaria", "Anacampseros retusa", "Anacampseros rufescens", "Fouquieria fasciculata", "Fouquieria diguetii", "Fouquieria purpusii", "Plumeria rubra", "Plumeria obtusa", "Plumeria alba", "Fenestraria rhopalophylla"
   ],
   "MIX 4": [
-    "Azalee", "Muscata", "Busuioc", "Menta", "Rozmarin", "Avocado", "Dafin", "Cacao", "Hibiscus", "Pachira Aquatica", "Iasomie", "Liliac", "Măslin", "Pilea", "Mimosa pudica", "Calamondin", "Grapefruit", "Kumquat", "Lămâi", "Limequat", "Mandarin", "Crin", "Trandafir", "Trandafir Japonez", "Oxalis", "Coconucifera", "Aucuba Japonica"
+    "Citrus limon", "Citrus aurantifolia", "Citrus sinensis", "Citrus reticulata", "Citrus paradisi", "Citrus medica", "Citrus maxima", "Citrus bergamia", "Citrus japonica", "Citrus margarita", "Murraya koenigii", "Murraya paniculata", "Persea americana", "Cinnamomum verum", "Cinnamomum cassia", "Cinnamomum camphora", "Cinnamomum burmannii", "Cinnamomum tamala", "Mentă", "Busuioc", "Salvie", "Cimbru", "Oregano", "Lavandă", "Nepeta cataria", "Nepeta faassenii", "Clerodendrum thomsoniae", "Clerodendrum ugandense", "Olea europaea", "Olea europaea var. sylvestris", "Olea capensis", "Olea fragrans", "Jasminum sambac", "Jasminum officinale", "Jasminum polyanthum", "Jasminum nudiflorum", "Jasminum grandiflorum", "Syringa vulgaris", "Syringa meyeri", "Syringa josikaea", "Syringa reticulata", "Trandafir", "Prunus serrulata", "Prunus cerasifera Pissardii", "Prunus laurocerasus", "Prunus lusitanica", "Prunus triloba", "Prunus persica var. atropurpurea", "Prunus glandulosa", "Spiraea japonica", "Spiraea vanhouttei", "Spiraea thunbergii", "Photinia fraseri Red Robin", "Photinia davidiana", "Cotoneaster horizontalis", "Cotoneaster dammeri", "Cotoneaster lacteus", "Kerria japonica Pleniflora", "Physocarpus opulifolius Diabolo", "Physocarpus Summer Wine", "Albizia julibrissin", "Wisteria sinensis", "Wisteria floribunda", "Pachira aquatica", "Pachira glabra", "Pachira insignis", "Hibiscus rosa-sinensis", "Hibiscus syriacus", "Hibiscus moscheutos", "Hibiscus sabdariffa", "Alcea rosea", "Alcea rugosa", "Alcea ficifolia", "Araucaria heterophylla", "Araucaria columnaris", "Araucaria araucana", "Araucaria angustifolia", "Bananier", "Curcuma", "Gossypium", "Theobroma", "Aucuba japonica", "Aucuba chinensis", "Aucuba himalaica", "Aucuba albopunctifolia", "Garrya elliptica", "Garrya fremontii", "Garrya laurifolia", "Garrya flavescens"
   ],
   "MIX 5": [
-    "Adenium Obesum", "Iasomie de Madagascar", "Leandru", "Plumeria", "Pachypodium lamerei (Palmier Cactus)", "Violeta de Africa", "Ficus", "Smochin", "Bougainvillea", "Phlebodium Aureum (Feriga)", "Arborele de cafea", "Gardenia", "Cyclamen"
+    "Ficus elastica", "Ficus lyrata", "Ficus benjamina", "Ficus microcarpa", "Ficus benghalensis", "Ficus religiosa", "Ficus carica", "Ficus pumila", "Ficus deltoidea", "Morus alba", "Morus nigra", "Morus rubra", "Dorstenia gigas", "Dorstenia foetida", "Clarisia racemosa", "Clarisia biflora", "Gardenia jasminoides", "Coffea arabica", "Coffea canephora", "Mussaenda philippica", "Mussaenda erythrophylla", "Bouvardia ternifolia", "Galium odoratum", "Hoya carnosa", "Hoya pubicalyx", "Hoya kerrii", "Hoya bella", "Hoya australis", "Hoya obovata", "Adenium obesum", "Adenium arabicum", "Adenium somalense", "Plumeria rubra", "Plumeria alba", "Plumeria obtusa", "Plumeria pudica", "Pachypodium lamerei", "Pachypodium rosulatum", "Pachypodium brevicaule", "Pachypodium saundersii", "Nerium oleander", "Mandevilla sanderi", "Dipladenia splendens", "Allamanda cathartica", "Allamanda blanchetii", "Stephanotis floribunda", "Carissa macrocarpa", "Carissa grandiflora", "Bougainvillea glabra", "Bougainvillea spectabilis", "Mirabilis jalapa", "Abronia fragrans", "Abronia umbellata", "Microsorum musifolium Crocodyllus", "Microsorum diversifolium", "Microsorum punctatum Grandiceps", "Microsorum scolopendrium", "Phlebodium aureum Blue Star", "Phlebodium pseudoaureum", "Polypodium vulgare", "Pleopeltis polypodioides", "Pleopeltis macrocarpa", "Campyloneurum phyllitidis", "Pyrrosia piloselloides", "Pyrrosia lingua"
   ],
-  "MIX 6": [
-    "Cordyline", "Dracaena", "Ponytail Palm (beaucarnea recurvata)", "Sansevieria", "Spider Plant", "Yucca", "Amaryllis", "Crin", "Zephyranthes", "Iedera", "Polyscias", "Schefflera", "Tradescantia"
+  "MIX 6A": [
+    "Dracaena fragrans", "Dracaena marginata", "Dracaena reflexa", "Dracaena surculosa", "Sansevieria trifasciata", "Sansevieria cylindrica", "Sansevieria masoniana", "Chlorophytum comosum", "Chlorophytum orchidastrum", "Agave americana", "Agave victoriae-reginae", "Agave parryi", "Yucca elephantipes", "Yucca filamentosa", "Yucca rostrata", "Asparagus setaceus", "Asparagus densiflorus Meyeri", "Asparagus plumosus", "Hosta sieboldiana", "Hosta fortunei", "Hyacinthus orientalis", "Muscari armeniacum", "Muscari botryoides", "Scilla siberica", "Hyacinthoides non-scripta", "Camassia quamash", "Ornithogalum umbellatum", "Liriope muscari", "Liriope spicata", "Ophiopogon japonicus", "Cordyline fruticosa", "Cordyline australis", "Polygonatum odoratum", "Polygonatum multiflorum", "Schefflera arboricola", "Schefflera actinophylla", "Schefflera amate", "Hedera helix", "Hedera hibernica", "Fatsia japonica", "Polyscias fruticosa", "Polyscias guilfoylei", "Polyscias scutellaria", "Aralia elata", "Nolina texana", "Nolina microcarpa", "Nolina lindheimeriana", "Nolina greenei", "Nolina nelsonii", "Aralia cordata", "Tradescantia zebrina", "Tradescantia fluminensis", "Tradescantia spathacea", "Tradescantia albiflora", "Tradescantia Nanouk", "Tradescantia pallida", "Callisia repens", "Callisia fragrans", "Callisia navicularis", "Cyanotis somaliensis", "Cyanotis kewensis", "Gibasis geniculata", "Gibasis pellucida", "Narcissus pseudonarcissus", "Narcissus tazetta", "Narcissus poeticus", "Clivia miniata", "Clivia nobilis", "Agapanthus africanus", "Agapanthus praecox", "Leucojum vernum", "Leucojum aestivum", "Zephyranthes candida", "Zephyranthes grandiflora", "Lycoris radiata", "Lycoris aurea", "Hymenocallis littoralis", "Hymenocallis speciosa", "Aspidistra elatior", "Aspidistra minor", "Aspidistra lurida", "Aspidistra zongbayensis", "Aspidistra typica"
   ],
-  "MIX 7": [
-    "Cattleya", "Cymbidium", "Dendrobium", "Phalaenopsis", "Vanda"
+  "MIX 6B": [
+    "Areca catechu", "Dypsis lutescens", "Chamaedorea elegans", "Chamaedorea metallica", "Phoenix roebelenii", "Phoenix dactylifera", "Howea forsteriana", "Howea belmoreana", "Livistona chinensis", "Livistona rotundifolia", "Washingtonia robusta", "Washingtonia filifera", "Trachycarpus fortunei", "Sabal palmetto", "Rhapis excelsa", "Rhapis humilis", "Cocos nucifera", "Roystonea regia", "Bismarckia nobilis", "Licuala grandis", "Archontophoenix alexandrae", "Archontophoenix cunninghamiana", "Hyophorbe lagenicaulis", "Hyophorbe verschaffeltii", "Caryota mitis", "Caryota urens", "Dypsis decaryi", "Dypsis madagascariensis", "Jubaea chilensis", "Beccariophoenix alfredii"
+  ],
+  "MIX 7A": [
+    "Phalaenopsis amabilis", "Phalaenopsis schilleriana", "Phalaenopsis stuartiana", "Phalaenopsis equestris", "Phalaenopsis violacea", "Dendrobium nobile", "Dendrobium anosmum", "Dendrobium kingianum", "Dendrobium phalaenopsis", "Dendrobium moniliforme", "Cattleya labiata", "Cattleya mossiae", "Brassavola nodosa", "Laelia purpurata", "Sophronitis coccinea", "Vanda coerulea", "Vanda tricolor", "Aerides odorata", "Rhynchostylis gigantea", "Oncidium sphacelatum", "Oncidium ornithorhynchum", "Tolumnia guianensis", "Gomesa recurva", "Psychopsis papilio", "Bulbophyllum medusae", "Bulbophyllum lobbii", "Coelogyne cristata", "Encyclia cochleata", "Angraecum sesquipedale", "Ascocentrum miniatum", "Aerangis biloba"
+  ],
+  "MIX 7B": [
+    "Cymbidium erythraeum", "Cymbidium eburneum", "Cymbidium devonianum var. album", "Cymbidium faberi var. flavescens", "Cymbidium tracyanum var. alba", "Cymbidium lowianum var. concolor", "Cymbidium iridioides var. giganteum", "Cymbidium ensifolium var. marginatum", "Cymbidium goeringii var. longibracteatum", "Cymbidium kanran var. alba", "Cymbidium floribundum var. pumilum", "Cymbidium tigrinum var. album", "Cymbidium sinense var. rubrum", "Cymbidium mastersii var. alba", "Cymbidium devonianum var. purpureum", "Cymbidium aloifolium var. flavum", "Cymbidium suave var. glaucum", "Cymbidium bicolor var. congestum", "Cymbidium insigne var. sanderae", "Cymbidium macrorhizon var. immaculatum", "Cymbidium erythrostylum var. alba", "Cymbidium forrestii var. luteum", "Cymbidium parishii var. concolor", "Cymbidium nanulum var. minor", "Cymbidium wenshanense var. aureum", "Cymbidium pumilum", "Cymbidium qiubeiense", "Cymbidium changningense", "Cymbidium longibracteatum", "Cymbidium tortisepalum"
+  ],
+  "MIX 8": [
+    "Polypodium vulgare", "Polypodium glycyrrhiza", "Polypodium scouleri", "Phlebodium aureum", "Phlebodium pseudoaureum", "Microsorum musifolium Crocodyllus", "Microsorum diversifolium", "Microsorum punctatum", "Pyrrosia piloselloides", "Pyrrosia lingua", "Pyrrosia longifolia", "Pleopeltis polypodioides", "Pleopeltis macrocarpa", "Lecanopteris carnosa", "Lecanopteris sinuosa", "Campyloneurum phyllitidis", "Campyloneurum angustifolium", "Belvisia mucronata", "Belvisia callifolia", "Begonia rex", "Begonia masoniana", "Begonia pavonina", "Begonia chlorosticta", "Begonia amphioxus", "Begonia semperflorens", "Begonia cucullata", "Begonia benariensis", "Piper nigrum", "Piper betle", "Piper sarmentosum", "Piper longum", "Piper cubeba", "Piper retrofractum", "Peperomia obtusifolia", "Peperomia argyreia", "Peperomia caperata", "Peperomia prostrata", "Peperomia rotundifolia", "Peperomia scandens", "Peperomia polybotrya", "Peperomia hope", "Verhuellia lunaria", "Verhuellia hoja", "Urtica dioica", "Urtica urens", "Urtica pilulifera", "Pilea peperomioides", "Pilea cadierei", "Pilea involucrata", "Pilea glauca", "Pilea microphylla", "Boehmeria nivea", "Boehmeria cylindrica", "Boehmeria platyphylla", "Elatostema repens", "Elatostema rugosum", "Elatostema umbellatum", "Parietaria officinalis", "Parietaria judaica", "Dendrocnide moroides", "Dendrocnide photiniphylla", "Cecropia peltata", "Cecropia obtusifolia", "Oxalis triangularis", "Oxalis deppei", "Oxalis pes-caprae", "Oxalis acetosella", "Oxalis oregana", "Oxalis latifolia", "Oxalis articulata", "Oxalis versicolor", "Oxalis corniculata", "Oxalis hirta", "Averrhoa carambola", "Averrhoa bilimbi", "Biophytum sensitivum", "Biophytum petersianum", "Fittonia albivenis", "Fittonia verschaffeltii", "Hypoestes phyllostachya", "Aphelandra squarrosa", "Acanthus mollis", "Acanthus spinosus", "Justicia brandegeeana", "Justicia carnea", "Justicia aurea", "Strobilanthes dyerianus", "Thunbergia alata", "Thunbergia grandiflora", "Tradescantia zebrina", "Tradescantia fluminensis", "Tradescantia spathacea", "Tradescantia pallida", "Tradescantia nanouk", "Callisia repens", "Callisia fragrans", "Callisia navicularis", "Gibasis geniculata", "Gibasis pellucida"
+  ],
+  "MIX 9A": [
+    "Rhododendron simsii", "Rhododendron yakushimanum", "Rhododendron luteum", "Vaccinium myrtillus", "Vaccinium vitis-idaea", "Vaccinium corymbosum", "Vaccinium macrocarpon", "Erica carnea", "Erica arborea", "Erica cinerea", "Calluna vulgaris", "Gaultheria procumbens", "Arbutus unedo", "Arbutus andrachne", "Kalmia latifolia", "Andromeda polifolia", "Lyonia lucida", "Oxydendrum arboreum", "Leucothoe fontanesiana", "Leucothoe axillaris", "Clethra alnifolia", "Clethra acuminata", "Chamaedaphne calyculata", "Cassiope mertensiana", "Cassiope lycopodioides", "Phyllodoce empetriformis", "Phyllodoce glanduliflora", "Vaccinium uliginosum", "Vaccinium cespitosum", "Vaccinium ovatum"
+  ],
+  "MIX 9B": [
+    "Vaccinium ovatum", "Drosera capensis", "Drosera aliciae", "Drosera spatulata", "Drosera binata", "Nepenthes alata", "Nepenthes rajah", "Nepenthes ventricosa", "Nepenthes sanguinea", "Sarracenia purpurea", "Sarracenia leucophylla", "Sarracenia flava", "Pinguicula tina", "Pinguicula cyclosecta", "Utricularia sandersonii", "Utricularia graminifolia", "Byblis gigantea", "Byblis liniflora", "Cephalotus follicularis", "Brocchinia reducta", "Catopsis berteroniana", "Dionaea muscipula", "Heliamphora heterodoxa", "Heliamphora minor"
   ]
 };
-// Flat plant list for autocomplete (case-insensitive, unique)
+
+// Build plant-to-mix mapping
 const plantToMix = {};
 Object.entries(mixes).forEach(([mix, arr]) => {
   arr.forEach(plant => {
@@ -183,65 +535,76 @@ Object.entries(mixes).forEach(([mix, arr]) => {
 });
 const plantNames = Object.keys(plantToMix);
 
-// State for added plants
+// State
 let addedPlants = [];
 
-// Helper: Capitalize first letter, rest lowercase
+// Helper functions
 function capitalizeFirstLetter(str) {
-  // Handles multi-word names as well
   return str.split(' ').map(word =>
     word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
   ).join(' ');
 }
 
+// Autocomplete functionality
 function autocomplete(inp, arr) {
   let currentFocus;
+  
   inp.addEventListener("input", function(e) {
     let val = this.value;
     closeAllLists();
     if (!val) return false;
+    
     const listDiv = document.getElementById("autocomplete-list");
     listDiv.innerHTML = "";
+    
     let matches = arr.filter(p => p.toLowerCase().includes(val.toLowerCase()));
     matches = matches.slice(0, 12);
+    
     if (matches.length === 0) {
       listDiv.style.display = "none";
       return;
     }
+    
     matches.forEach(item => {
       let itemDiv = document.createElement("div");
       itemDiv.className = "autocomplete-item";
-      // Highlight match (case-insensitive)
+      
       const idx = item.toLowerCase().indexOf(val.toLowerCase());
       if (idx >= 0) {
         itemDiv.innerHTML = item.substring(0, idx) + "<strong>" + item.substring(idx, idx + val.length) + "</strong>" + item.substring(idx + val.length);
       } else {
         itemDiv.innerHTML = item;
       }
+      
       itemDiv.addEventListener("click", function(e) {
         inp.value = item;
         closeAllLists();
       });
+      
       listDiv.appendChild(itemDiv);
     });
+    
     listDiv.style.display = "block";
   });
+  
   inp.addEventListener("keydown", function(e) {
     let listDiv = document.getElementById("autocomplete-list");
     let items = listDiv ? listDiv.getElementsByTagName("div") : [];
-    if (e.keyCode == 40) { // down
+    
+    if (e.keyCode == 40) {
       currentFocus++;
       addActive(items);
-    } else if (e.keyCode == 38) { // up
+    } else if (e.keyCode == 38) {
       currentFocus--;
       addActive(items);
-    } else if (e.keyCode == 13) { // enter
+    } else if (e.keyCode == 13) {
       e.preventDefault();
       if (currentFocus > -1 && items[currentFocus]) {
         items[currentFocus].click();
       }
     }
   });
+  
   function addActive(items) {
     if (!items) return false;
     removeActive(items);
@@ -249,21 +612,26 @@ function autocomplete(inp, arr) {
     if (currentFocus < 0) currentFocus = items.length - 1;
     items[currentFocus].classList.add("autocomplete-active");
   }
+  
   function removeActive(items) {
     for (let i = 0; i < items.length; i++) {
       items[i].classList.remove("autocomplete-active");
     }
   }
+  
   function closeAllLists(elmnt) {
     let listDiv = document.getElementById("autocomplete-list");
     if (listDiv) listDiv.style.display = "none";
   }
+  
   document.addEventListener("click", function (e) {
     closeAllLists(e.target);
   });
 }
+
 autocomplete(document.getElementById("plantInput"), plantNames);
 
+// Add plant functionality
 document.getElementById("addPlant").addEventListener("click", addPlant);
 document.getElementById("plantInput").addEventListener("keydown", function(e) {
   if (e.key === "Enter") {
@@ -275,18 +643,22 @@ document.getElementById("plantInput").addEventListener("keydown", function(e) {
 function addPlant() {
   const input = document.getElementById("plantInput");
   const name = input.value.trim();
+  
   if (!name) return;
-  // Find canonical plant name (case-insensitive)
+  
   const match = plantNames.find(p => p.toLowerCase() === name.toLowerCase());
+  
   if (!match) {
     alert("Planta nu există în listă!");
     return;
   }
+  
   if (addedPlants.some(p => p.name.toLowerCase() === match.toLowerCase())) {
+    alert("Această plantă este deja în listă!");
     input.value = "";
     return;
   }
-  // Force first letter uppercase, rest lowercase for display
+  
   const formattedName = capitalizeFirstLetter(match);
   addedPlants.push({ name: formattedName, mix: plantToMix[match.toLowerCase()] });
   input.value = "";
@@ -298,30 +670,150 @@ function removePlant(idx) {
   renderPlantsTable();
 }
 
+function clearAll() {
+  if (addedPlants.length === 0) return;
+  if (confirm("Sigur vrei să ștergi toate plantele din listă?")) {
+    addedPlants = [];
+    renderPlantsTable();
+  }
+}
+
 function renderPlantsTable() {
   const container = document.getElementById("plantsTableContainer");
+  
   if (addedPlants.length === 0) {
-    container.innerHTML = "";
+    container.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-state-icon">🌱</div>
+        <h3>Nu ai adăugat încă plante</h3>
+        <p>Caută și adaugă plante pentru a vedea mixul de sol recomandat</p>
+      </div>
+    `;
     return;
   }
+  
   let html = `<table>
     <thead>
-      <tr><th>Plantă</th><th>Mix recomandat</th><th></th></tr>
+      <tr>
+        <th>🌿 Plantă</th>
+        <th>🪴 Mix recomandat</th>
+        <th style="width: 60px;"></th>
+      </tr>
     </thead>
     <tbody>`;
+  
   addedPlants.forEach((p, idx) => {
     html += `<tr>
-      <td>${p.name}</td>
-      <td>${p.mix}</td>
-      <td><button class="remove-plant-btn" title="Șterge" onclick="removePlant(${idx})">&times;</button></td>
+      <td><strong>${p.name}</strong></td>
+      <td><span class="mix-badge">${p.mix}</span></td>
+      <td style="text-align: center;">
+        <button class="remove-btn" title="Șterge" onclick="removePlant(${idx})">&times;</button>
+      </td>
     </tr>`;
   });
+  
   html += `</tbody></table>`;
   container.innerHTML = html;
 }
 
-// Expose removePlant for inline onclick
+// Modal functionality
+const modal = document.getElementById("allPlantsModal");
+const viewAllBtn = document.getElementById("viewAllBtn");
+const closeBtn = document.querySelector(".close");
+const clearAllBtn = document.getElementById("clearAllBtn");
+
+viewAllBtn.onclick = function() {
+  renderAllPlants();
+  modal.style.display = "block";
+}
+
+closeBtn.onclick = function() {
+  modal.style.display = "none";
+}
+
+clearAllBtn.onclick = clearAll;
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+// Search in modal
+document.getElementById("modalSearch").addEventListener("input", function(e) {
+  renderAllPlants(e.target.value);
+});
+
+function renderAllPlants(searchTerm = "") {
+  const content = document.getElementById("allPlantsContent");
+  
+  // Calculate stats
+  let totalPlants = 0;
+  Object.values(mixes).forEach(arr => {
+    totalPlants += arr.length;
+  });
+  
+  let html = `
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-number">${totalPlants}</div>
+        <div class="stat-label">Plante în total</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">${Object.keys(mixes).length}</div>
+        <div class="stat-label">Mixuri disponibile</div>
+      </div>
+    </div>
+  `;
+  
+  Object.entries(mixes).forEach(([mix, plants]) => {
+    // Filter plants based on search
+    let filteredPlants = plants;
+    if (searchTerm) {
+      filteredPlants = plants.filter(p => p.toLowerCase().includes(searchTerm.toLowerCase()));
+    }
+    
+    if (filteredPlants.length === 0 && searchTerm) return;
+    
+    html += `
+      <div class="mix-section">
+        <h3>🌱 ${mix} <span style="font-size: 14px; opacity: 0.7;">(${filteredPlants.length} ${filteredPlants.length === 1 ? 'plantă' : 'plante'})</span></h3>
+        <div class="plant-grid">
+    `;
+    
+    filteredPlants.forEach(plant => {
+      html += `<div class="plant-item">${plant}</div>`;
+    });
+    
+    html += `
+        </div>
+      </div>
+    `;
+  });
+  
+  if (searchTerm && html === `
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-number">${totalPlants}</div>
+        <div class="stat-label">Plante în total</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">${Object.keys(mixes).length}</div>
+        <div class="stat-label">Mixuri disponibile</div>
+      </div>
+    </div>
+  `) {
+    html += `<div class="empty-state"><p>Nu s-au găsit plante pentru "${searchTerm}"</p></div>`;
+  }
+  
+  content.innerHTML = html;
+}
+
+// Expose functions for inline onclick
 window.removePlant = removePlant;
+
+// Initial render
+renderPlantsTable();
 </script>
 </body>
 </html>
